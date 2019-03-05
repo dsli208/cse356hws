@@ -1,0 +1,58 @@
+---
+- hosts: hw1
+  user: ubuntu
+  sudo: yes
+  tasks:
+        - name: install apache2
+          apt:
+                name: apache2
+                update_cache: yes
+        - name: enable ufw
+          ufw:
+                state: enabled
+                policy: allow
+        - name: making sure apache is STARTED
+          command: systemctl status apache2
+        - name: Allow access to port 80
+          ufw:
+            rule: allow
+            port: 80
+            proto: tcp
+       # - name: Delete html folder
+       #   file:
+       #     path: /var/www/html
+       #     state: absent
+       # - name: clone the git repo
+       #   git:
+       #     repo: https://github.com/dsli208/CloudComputing356.git
+       #     dest: /var/www/dslicse356hw1.com/html/hw0
+       #     update: no
+       # - name: Create web directory
+       #   file:
+       #     path: /var/www/html
+       #     state: directory
+        - name: Create another web directory
+          file:
+            path: /var/www/dslicse356hw1.com/html/hw0
+            state: directory
+        - name: Clone from git
+          git:
+            repo: https://github.com/dsli208/CloudComputing356.git
+            dest: /var/www/dslicse356hw1.com/html/hw0
+            update: yes
+        - name: Copy hw0.html to /var/www/html
+          copy:
+            src: /var/www/dslicse356hw1.com/html/hw0/hw0.html
+            dest: /var/www/dslicse356hw1.com/html
+            remote_src: yes
+        - name: Copy the conf file
+          copy:
+            src: /var/www/dslicse356hw1.com/html/hw0/dslicse356hw1.com.conf
+            dest: /etc/apache2/sites-available/dslicse356hw1.com.conf
+            remote_src: yes
+        - name: Disable default site
+          command: a2dissite 000-default.conf
+        - name: Enable dslicse356hw1.com
+          command: a2ensite dslicse356hw1.com.conf
+        - name: Restart apache
+          command: systemctl restart apache2
