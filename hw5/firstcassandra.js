@@ -21,9 +21,9 @@ client.connect(function (err) {
   console.log(Object.keys(client.metadata.keyspaces));
 });
 
-app.get('/', (req, res, next) => res.send("Listening"))
+app.get('/', upload.none(), (req, res, next) => res.send("Listening"))
 
-app.post('/deposit', (req, res, next) => {
+app.post('/deposit', upload.single('img'), (req, res, next) => {
   console.log(req.body.filename);
   const query = 'INSERT INTO imgs (filename, contents) VALUES (%s, %s)';
   const params = [req.body.filename, req.body.contents];
