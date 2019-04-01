@@ -8,7 +8,7 @@ app.use(express.urlencoded());
 app.use(express.json());
 
 var multer  = require('multer')
-var upload = multer()
+var upload = multer({dest: 'uploads/'})
 
 const client = new cassandra.Client({
   contactPoints: ['127.0.0.1'],
