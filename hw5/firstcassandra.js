@@ -50,6 +50,7 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
     });
   });
 
+  res.json({"status": "OK"});
 })
 
 app.get('/receive', (req, res, next) => {
