@@ -28,7 +28,7 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
   const query = 'INSERT INTO imgs (filename, contents) VALUES (%s, %s)';
   const params = [req.body.filename, req.body.contents];
   client.execute(query, params, { prepare: true }, function (err) {
-    //assert.ifError(err);
+    console.log(err); // if no error, undefined
     console.log("Inserted into Cluster?");
   });
 })
