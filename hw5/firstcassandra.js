@@ -17,6 +17,7 @@ const client = new cassandra.Client({
 
 client.connect(function (err) {
   console.log("Connected to Cassandra DB");
+  console.log(Object.keys(client.metadata.keyspaces));
 });
 
 app.get('/', (req, res, next) => res.send("Listening"))
