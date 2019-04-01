@@ -55,9 +55,9 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
 
 app.get('/retrieve', (req, res, next) => {
   var filename = req.query.filename;
-  const query = 'SELECT content FROM imgs WHERE filename = ?';
+  const query = 'SELECT contents FROM imgs WHERE filename = ?';
   const params = [filename];
-  client.execute(query, params, callback);
+  client.execute(query, params, {prepare: true});
 
   res.send("Method finished");
 })
