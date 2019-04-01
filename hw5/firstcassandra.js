@@ -42,8 +42,8 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
     console.log(content);   // Put all of the code here (not the best solution)
   });
 
-  const query = 'INSERT INTO imgs (filename, contents) VALUES (?, ?)';
-  const params = [req.body.filename, content];
+  const query = 'INSERT INTO imgs (filename, contents) VALUES (?, textToBlog(?))';
+  const params = [req.body.filename, textToBlob(content)];
   client.execute(query, params, { prepare: true }, function (err) {
     console.log(err); // if no error, undefined
     console.log("Inserted into Cluster?");
