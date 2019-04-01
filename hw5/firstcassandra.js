@@ -53,8 +53,13 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
   res.json({"status": "OK"});
 })
 
-app.get('/receive', (req, res, next) => {
-  const query = 'SELECT filename, content FROM imgs WHERE filename = ?';
+app.get('/retrieve', (req, res, next) => {
+  var filename = req.query.filename;
+  const query = 'SELECT content FROM imgs WHERE filename = ?';
+  const params = [filename];
+  client.execute(query, params, callback);
+
+  res.send("Method finished");
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
