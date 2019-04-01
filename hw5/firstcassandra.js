@@ -13,6 +13,8 @@ client.connect(function (err) {
   //assert.ifError(err);
 });
 
+app.get('/', (req, res) => res.send)
+
 app.post('/deposit', (req, res) => {
 
   const query = 'INSERT INTO imgs (filename, contents) VALUES (%s, %s)';
