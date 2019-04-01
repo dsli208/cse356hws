@@ -28,6 +28,7 @@ app.get('/', upload.none(), (req, res, next) => res.send("Listening"))
 app.post('/deposit', upload.single('contents'), (req, res, next) => {
   console.log(req.body);
   console.log(req.file);
+  console.log(req.file.buffer);
 
   // Extract data from file
   var content;
