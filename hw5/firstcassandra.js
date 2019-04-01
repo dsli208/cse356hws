@@ -29,7 +29,7 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
   const params = [req.body.filename, req.body.contents];
   client.execute(query, params, { prepare: true }, function (err) {
     //assert.ifError(err);
-    //Inserted in the cluster
+    console.log("Inserted into Cluster?");
   });
 })
 
