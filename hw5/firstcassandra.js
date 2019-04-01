@@ -41,7 +41,7 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
     console.log(content);
   });
 
-  const query = 'INSERT INTO imgs (filename, contents) VALUES (?, textToBlob(?))';
+  const query = 'INSERT INTO imgs (filename, contents) VALUES (?, ?)';
   const params = [req.body.filename, content];
   client.execute(query, params, { prepare: true }, function (err) {
     console.log(err); // if no error, undefined
