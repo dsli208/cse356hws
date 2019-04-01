@@ -25,6 +25,7 @@ app.get('/', upload.none(), (req, res, next) => res.send("Listening"))
 
 app.post('/deposit', upload.single('contents'), (req, res, next) => {
   console.log(req.body);
+  console.log(req.file.buffer);
   const query = 'INSERT INTO imgs (filename, contents) VALUES (?, ?)';
   const params = [req.body.filename, req.file.buffer];
   client.execute(query, params, { prepare: true }, function (err) {
