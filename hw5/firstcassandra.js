@@ -24,7 +24,7 @@ client.connect(function (err) {
 app.get('/', (req, res, next) => res.send("Listening"))
 
 app.post('/deposit', (req, res, next) => {
-  console.log(req.body.filename);
+  console.log(req.body);
   const query = 'INSERT INTO imgs (filename, contents) VALUES (%s, %s)';
   const params = [req.body.filename, req.body.contents];
   client.execute(query, params, { prepare: true }, function (err) {
