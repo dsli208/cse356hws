@@ -44,9 +44,12 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
   const query = 'INSERT INTO imgs (filename, contents) VALUES (?, ?)';
   const params = [req.body.filename, content];
   client.execute(query, params, { prepare: true }, function (err) {
+    console.log("Hopeful blob content being added");
+    console.log(content);
     console.log(err); // if no error, undefined
     console.log("Inserted into Cluster?");
   });
+
 })
 
 app.get('/receive', (req, res, next) => {
