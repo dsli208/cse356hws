@@ -31,7 +31,7 @@ app.post('/deposit', upload.single('contents'), (req, res, next) => {
 
   // Extract data from file
   var content;
-  fs.readFile(req.file, function read(err, data) {
+  fs.readFile(req.file.buffer, function read(err, data) {
     if (err) {
         throw err;
     }
