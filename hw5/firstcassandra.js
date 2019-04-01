@@ -13,7 +13,7 @@ client.connect(function (err) {
   //assert.ifError(err);
 });
 
-app.get('/', (req, res) => res.send)
+app.get('/', (req, res) => res.send("Listening"))
 
 app.post('/deposit', (req, res) => {
 
