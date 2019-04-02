@@ -59,9 +59,9 @@ app.get('/retrieve', (req, res, next) => {
   const params = [filename];
   client.execute(query, params, {prepare: true}, function (err, result) {
     console.log("Executing retrieve");
-    res.contentType( req.query.filename.split(".")[1]);
+    res.contentType(req.query.filename.split(".")[1]);
 		res.send(result.rows[0].contents);
-  }
+  });
 
   res.send("Method finished");
 })
