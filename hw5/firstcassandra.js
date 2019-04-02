@@ -63,7 +63,6 @@ app.get('/retrieve', (req, res, next) => {
 		res.send(result.rows[0].contents);
   });
 
-  res.send("Method finished");
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
