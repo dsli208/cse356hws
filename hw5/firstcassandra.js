@@ -57,7 +57,11 @@ app.get('/retrieve', (req, res, next) => {
   var filename = req.query.filename;
   const query = 'SELECT contents FROM imgs WHERE filename = ?';
   const params = [filename];
-  client.execute(query, params, {prepare: true});
+  client.execute(query, params, {prepare: true}, function (err, result) {
+    console.log("Executing retrieve");
+    res.contentType( req.query.filename.split(".")[1]);
+		res.send(result.rows[0].contents);
+  }
 
   res.send("Method finished");
 })
