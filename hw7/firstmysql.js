@@ -26,8 +26,9 @@ var q2 = "SELECT AVG(A) AS average FROM assists WHERE `pos` = ? and `club` = ?";
 app.get('/hw7', (req, res) => {
 
   // Get query vars
-  var club = req.query.club;
-  var pos = req.query.pos;
+  var club = req.query.club + "";
+  var pos = req.query.pos + "";
+  club = club.toUpperCase(); pos = pos.toUpperCase();
 
   var key = club + " " + pos;
   mcclient.get(key, function(err3, res3) {
