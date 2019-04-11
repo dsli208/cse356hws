@@ -43,8 +43,8 @@ app.get('/hw7', (req, res) => {
     else {
       res.json(JSON.parse(res3[key]));
     }
-  })
-})*/
+  })*/
+})
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
