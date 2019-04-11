@@ -5,6 +5,8 @@ const app = express()
 const port = 3000;
 var mcclient = new memcache.Client();
 mcclient.connect();
+app.use(bodyParser.json());
+app.use(express.json());
 
 var connection = mysql.createConnection({
   host: 'localhost',
