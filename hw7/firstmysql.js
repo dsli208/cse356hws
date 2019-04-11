@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var express = require('express');
 
 var connection = mysql.createConnection({
   host: 'localhost',
@@ -11,8 +12,9 @@ connection.connect();
 
 connection.query('select * from assists', function(err, rows, fields) {
   if (err) throw err;
-
-  rows.array.forEach(e => {
+  console.log("query works");
+  console.log(rows);
+  /*rows.array.forEach(e => {
     console.log(e);
-  })
+  })*/
 })
