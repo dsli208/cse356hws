@@ -22,12 +22,12 @@ connection.connect();
 app.get('/hw7', (req, res) => {
 
   // Get query vars
-  var club = req.query.club + "";
+  /*var club = req.query.club + "";
   var pos = req.query.pos + "";
   club = club.toUpperCase(); pos = pos.toUpperCase();
   var key = club + " " + pos;
   mcclient.get(key, function(err3, res3) {
-    if (err3) {
+    if (err3) {*/
       // Find the club + pos from DB
       connection.query("SELECT club, pos, player, a FROM assists WHERE `pos` = ? and `club` = ? ORDER BY a DESC, gs DESC, player", [pos, club], function(err1, res1) {
           console.log(res1[0]);
@@ -39,12 +39,12 @@ app.get('/hw7', (req, res) => {
             mcclient.set(key, JSON.stringify({"club": res1[0].club, "pos": res1[0].pos, "max_assists": res1[0].a, "player": res1[0].player, "avg_assists": res2[0].average}));
           })
       })
-    }
+    /*}
     else {
       res.json(JSON.parse(res3[key]));
     }
   })
-})
+})*/
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
