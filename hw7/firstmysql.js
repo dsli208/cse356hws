@@ -22,7 +22,7 @@ app.get('/hw7', (req, res) => {
 
   // Find the club + pos from DB
   connection.query("SELECT AVG(A) AS average FROM assists WHERE `pos` = ? and `club` = ?", [pos, club], function(err, result) {
-    console.log(result);
+    console.log(result[0]);
     res.json({"club": "HOU", "pos": "M", "max_assists": 0, "player": "xxx", "avg_assists": 0});
   })
 })
