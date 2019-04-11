@@ -3,7 +3,7 @@ var express = require('express');
 var memcache = require('mc');
 const app = express()
 const port = 3000;
-var mcclient = new mc.Client();
+var mcclient = new memcache.Client();
 mcclient.connect();
 
 var connection = mysql.createConnection({
