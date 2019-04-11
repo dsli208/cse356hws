@@ -21,13 +21,13 @@ app.get('/hw7', (req, res) => {
   club = club.toUpperCase(); pos = pos.toUpperCase();
 
   // Find the club + pos from DB
-  connection.query("SELECT club, pos, player FROM assists WHERE `pos` = ? and `club` = ?", [pos, club], function(err, res1) {
+  connection.query("SELECT club, pos, player FROM assists WHERE `pos` = ? and `club` = ?ORDER BY a DESC, gs DESC, player", [pos, club], function(err, res1) {
       console.log(res1[0]);
 
     // Get the average assists
     connection.query("SELECT AVG(A) AS average FROM assists WHERE `pos` = ? and `club` = ?", [pos, club], function(err, res2) {
       console.log(res2[0]);
-      res.json({"club": "HOU", "pos": "M", "max_assists": 0, "player": "xxx", "avg_assists": res2[0].average});
+      res.json({"club": res1[0].club, "pos": res1[0].pos, "max_assists": res1[0].a, "player": res1[0].player, "avg_assists": res2[0].average});
     })
   })
 })
