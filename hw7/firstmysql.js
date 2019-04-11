@@ -4,8 +4,8 @@ var memcache = require('mc');
 const app = express()
 const port = 3000;
 var mcclient = new memcache.Client();
-mcclient.connect(() {
-
+mcclient.connect(() => {
+  console.log("Ready");
 });
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
