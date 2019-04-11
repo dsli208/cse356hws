@@ -24,9 +24,9 @@ connection.connect();
 app.get('/hw7', (req, res) => {
 
   // Get query vars
-  var club = req.query.club + "";
-  var pos = req.query.pos + "";
-  club = club.toUpperCase(); pos = pos.toUpperCase();
+  var club = req.query.club;
+  var pos = req.query.pos;
+
   var key = club + " " + pos;
   mcclient.get(key, function(err3, res3) {
     if (err3) {
