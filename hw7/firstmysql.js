@@ -21,7 +21,7 @@ app.get('/hw7', (req, res) => {
   club = club.toUpperCase(); pos = pos.toUpperCase();
 
   // Find the club + pos from DB
-  connection.query("SELECT club, pos, player FROM assists WHERE `pos` = ? and `club` = ?ORDER BY a DESC, gs DESC, player", [pos, club], function(err, res1) {
+  connection.query("SELECT club, pos, player, a FROM assists WHERE `pos` = ? and `club` = ?ORDER BY a DESC, gs DESC, player", [pos, club], function(err, res1) {
       console.log(res1[0]);
 
     // Get the average assists
