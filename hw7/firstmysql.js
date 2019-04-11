@@ -21,7 +21,7 @@ app.get('/hw7', (req, res) => {
   club = club.toUpperCase(); pos = pos.toUpperCase();
 
   // Find the club + pos from DB
-  connection.query("SELECT AVG(A) AS average FROM assists WHERE `pos` = ? and `club` = ?", [position, club], function(err, result) {
+  connection.query("SELECT AVG(A) AS average FROM assists WHERE `pos` = ? and `club` = ?", [pos, club], function(err, result) {
     console.log(result);
     res.json({"club": "HOU", "pos": "M"});
   })
